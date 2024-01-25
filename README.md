@@ -3,7 +3,7 @@ More to come as project develops.
 
 Goal
 
-The primary goal of this project is to create a Lora Mesh using ESP32 boards in conjunction with a GPS to track locations and other various data of racers and eport back to a main host, ie a server. The devices will all be able to custom addressable with a name or number of each individual racer. The server will be able to see all the data, location, speed, heading direction, and possibly something along the lines of acceleration or orientation using a 12DOF accelerometer.
+The primary goal of this project is to create a Lora Mesh using ESP32 boards in conjunction with a GPS to track locations and other various data of racers and eport back to a main host, ie a server. The devices will all be able to custom addressable with a name or number of each individual racer. The server will be able to see data such as location, speed, heading direction, and possibly something along the lines of acceleration or orientation using a 12DOF accelerometer.
 
 What is LoRa®?
 
