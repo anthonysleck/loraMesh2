@@ -1,23 +1,23 @@
 /*
-   Lora Mesh
+   Lora Mesh - Bridge
    Description:
    See Github Repository
    Notes:
-   -Coming Soon!
    Contact Info:
    email - anthony.sleck@gmail.com
    web - anthony.sleck.us
    github - https://github.com/anthonysleck/loraMesh2
    Changelog:
    0.1 - new code; seperated code for node/bridge devices
+   0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
 */
 
 #ifndef config_h
 #define config_h
 
 // system versioning
-#define VER "0.1"
-#define VER_BUILD "01252024"
+#define VER "0.2"
+#define VER_BUILD "01262024"
 #define email "anthony.sleck@gmail.com"
 #define firmwareLink "https://github.com/anthonysleck/loraMesh2"
 
@@ -28,19 +28,16 @@
 #include "SSD1306Wire.h"
 #include <SPI.h>
 
-// **************************************
 // temporary testing config; disable all parameters here when in production
-// **************************************
 String gpsTempLocation = "";
-float gpsLat = 100.000;
-float gpsLng = -100.000;
-// **************************************
-// **************************************
+float gpsLat = 42.947373;
+float gpsLng = -87.909719;
 
 // device definitions
 #define DEBUG 1      // set to 0 to disable serial debugging; set to 1 to enable serial debugging
 #define HASDISPLAY 1 // set to 0 for no display; set to 1 for display
-#define DEV_ID 101   // address of the bridge; can be a value from 1-254
+#define DEV_ID 20    // address of the bridge; can be a value from 1-254
+#define BRIDGE_ID 1   // set to default bridge/server to receive data; default is 1
 
 // debugging
 #if DEBUG == 1
@@ -66,14 +63,13 @@ float gpsLng = -100.000;
 #define LORA_DI0 26
 #define txPower 20
 #define txFreq 915.0
-#define RXTIMEOUT 10000  // it is roughly the delay between successive transmissions
 #define TXINTERVAL 10000 // delay between successive transmissions
 unsigned long nextTxTime;
 RH_RF95 rf95(LORA_CS, LORA_DI0); // slave select pin and interrupt pin, [heltec|ttgo] ESP32 Lora OLED with sx1276/8
 uint8_t buf[RH_MESH_MAX_MESSAGE_LEN];
 uint8_t res;
 RHMesh manager(rf95, DEV_ID);
-uint8_t data[] = "Hello World!";
+//uint8_t data[] = "Hello World!";
 
 // OLED config
 #if HASDISPLAY == 1

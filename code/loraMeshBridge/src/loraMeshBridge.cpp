@@ -116,17 +116,19 @@ void startWIFIManager()
 
 void startLora()
 {
+    debug(F("Initializing bridge "));
+    debugln(DEV_ID);
     SPI.begin(LORA_SCK, LORA_MISO, LORA_MOSI, LORA_CS);
     if (!manager.init())
     {
-        debugln(" init failed");
+        debugln("Initialization failed");
     }
     else
     {
-        debugln(" done");
-    }                                // Defaults after init are 434.0MHz, 0.05MHz AFC pull-in, modulation FSK_Rb2_4Fd36
+        debugln("Initialization Complete!");
+    }
+
     rf95.setTxPower(txPower, false); // with false output is on PA_BOOST, power from 2 to 20 dBm, use this setting for high power demos/real usage
-    // rf95.setTxPower(txPower, true); // true output is on RFO, power from 0 to 15 dBm, use this setting for low power demos ( does not work on lilygo lora32 )
     rf95.setFrequency(txFreq);
     rf95.setCADTimeout(500);
 
@@ -155,24 +157,24 @@ void startLora()
             debugln(F("set config failed"));
         }
     }
+    debugln("RF95 ready");
 }
 
-// uint8_t data[] = "Hello back from bridge";
+uint8_t data[] = "Gotcha!"; // change response message
+uint8_t len = sizeof(buf);
+uint8_t from;
 
 void messageRefresh()
 {
-    uint8_t len = sizeof(buf);
-    uint8_t from;
     if (manager.recvfromAck(buf, &len, &from))
     {
-        debug("request from node n.");
+        debug("Data from node n.");
         debug(from);
         debug(": ");
         debug((char *)buf);
         debug(" rssi: ");
         debugln(rf95.lastRssi());
 
-        /*
         // Send a reply back to the originator client
         res = manager.sendtoWait(data, sizeof(data), from);
         if (res != RH_ROUTER_ERROR_NONE)
@@ -180,7 +182,6 @@ void messageRefresh()
             debug("sendtoWait failed:");
             debugln(res);
         }
-        */
     }
 }
 

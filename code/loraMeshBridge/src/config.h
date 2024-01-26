@@ -1,23 +1,23 @@
 /*
-   Lora Mesh
+   Lora Mesh - Node
    Description:
    See Github Repository
    Notes:
-   -Coming Soon!
    Contact Info:
    email - anthony.sleck@gmail.com
    web - anthony.sleck.us
    github - https://github.com/anthonysleck/loraMesh2
    Changelog:
    0.1 - new code; seperated code for node/bridge devices
+   0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
 */
 
 #ifndef config_h
 #define config_h
 
 // system versioning
-#define VER "0.1"
-#define VER_BUILD "01252024"
+#define VER "0.2"
+#define VER_BUILD "01262024"
 #define email "anthony.sleck@gmail.com"
 #define firmwareLink "https://github.com/anthonysleck/loraMesh2"
 
@@ -62,8 +62,6 @@ DoubleResetDetector* drd;
 #define LORA_DI0 26
 #define txPower 20
 #define txFreq 915.0
-#define RXTIMEOUT 10000  // it is roughly the delay between successive transmissions
-#define TXINTERVAL 10000 // delay between successive transmissions
 unsigned long nextTxTime;
 RH_RF95 rf95(LORA_CS, LORA_DI0); // slave select pin and interrupt pin, [heltec|ttgo] ESP32 Lora OLED with sx1276/8
 uint8_t buf[RH_MESH_MAX_MESSAGE_LEN];

@@ -73,10 +73,9 @@ void startLora()
     else
     {
         debugln(" done");
-    } // Defaults after init are 434.0MHz, 0.05MHz AFC pull-in, modulation FSK_Rb2_4Fd36
+    }
 
     rf95.setTxPower(txPower, false); // with false output is on PA_BOOST, power from 2 to 20 dBm, use this setting for high power demos/real usage
-    // rf95.setTxPower(txPower, true); // true output is on RFO, power from 0 to 15 dBm, use this setting for low power demos ( does not work on lilygo lora32 )
     rf95.setFrequency(txFreq);
     rf95.setCADTimeout(500);
 
@@ -109,20 +108,20 @@ void startLora()
     nextTxTime = millis();
 }
 
-
-
 void messageRefresh()
 {
+    // set gps string
+    String gpsTempLocation = String(gpsLat, 4) + ", " + String(gpsLng, 4);  // using temp location defined in config.h; will change to live GPS later
+    
     // send message every TXINTERVAL millisecs
     if (millis() > nextTxTime)
     {
         nextTxTime += TXINTERVAL;
-        debug("Sending to bridge");
+        debug("Sending to bridge n.");
+        debug(BRIDGE_ID);
         debug(" res=");
 
-        // Send a message to a rf95_mesh_server
-        // A route to the destination will be automatically discovered.
-        res = manager.sendtoWait(data, sizeof(data), DEV_ID);
+        res = manager.sendtoWait((uint8_t*)gpsTempLocation.c_str(), gpsTempLocation.length(), BRIDGE_ID);
         debugln(res);
         if (res == RH_ROUTER_ERROR_NONE)
         {
