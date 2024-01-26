@@ -17,6 +17,8 @@ Future things include the following:
 
 Currently the hardware is limited to the TTGO Lora32 T3 V1.6.1 and the TTGO T-Beam V1.1
 
+![20240126_160008](https://github.com/anthonysleck/loraMesh2/assets/20516767/307da9a6-d086-425d-ba49-58a5e98f3bd5)
+
 ##  Usage Instructions
 
 Usage is pretty simple!
