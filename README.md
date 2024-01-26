@@ -33,6 +33,12 @@ Additional notes
 - For bridges, there is a a Double Reset Detector and the Network Manager enabled by default. These will be able to be disabled at a later date, but are required. You must connect to a WiFi network upon first boot of the device.
 - The Bridges also require the filesystem to be uploaded.
 
+##  Changelog
+
+- 0.0 - initial release
+- 0.1 - new code; seperated code for node/bridge devices
+- 0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
+
 ## Authors
 
 - [@anthonysleck](https://www.github.com/anthonysleck)
