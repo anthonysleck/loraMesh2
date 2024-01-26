@@ -10,11 +10,23 @@ LoRa (short for long range) is a spread spectrum modulation technique derived fr
 
 ## Supported Hardware
 
-Coming Soon!
+Currently the hardware is limited to the TTGO Lora32 T3 V1.6.1 and the TTGO T-Beam V1.1
 
 ##  Usage Instructions
 
-Coming Soon!
+Usage is pretty simple!
+1. Downlaod.
+2. Open the node type you are flashing in VSCode.
+3. Adjust the settings for the node type in the config.h for the device you are using. 
+4. Compile and upload.
+
+Additional notes.
+   a. There has to be atleast one bridge to accept the data. Currently that ID is set to 1. If the bridge id is changed, make sure the BRIDGE_ID is also changed in the node config.h file.
+   b. You can turn serial printing on or off by changing the #define DEBUG to 0 or 1 in the config.h file for the node type. 0 is on, and 1 is off.
+   c. You can turn the display on or off by changing the #define HASDISPLAY to 0 or 1 in the config.h file for the node type. 0 is off and 1 is on.
+   d. Be sure to set different DEV_ID's for each node in the config.h file for the node type.
+   e. For bridges, there is a a Double Reset Detector and the Network Manager enabled by default. These will be able to be disabled at a later date, but are required. You must connect to a WiFi network upon first boot of the device.
+   f. The Bridges also require the filesystem to be uploaded.
 
 ## Authors
 
