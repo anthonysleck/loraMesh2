@@ -8,6 +8,11 @@ What is LoRa®?
 
 LoRa (short for long range) is a spread spectrum modulation technique derived from chirp spread spectrum (CSS) technology. Semtech’s LoRa is a long range, low power wireless platform that has become the de facto wireless platform of Internet of Things (IoT). LoRa devices and networks such as the LoRaWAN® enable smart IoT applications that solve some of the biggest challenges facing our planet: energy management, natural resource reduction, pollution control, infrastructure efficiency, and disaster prevention. Semtech’s LoRa devices have amassed several hundred known uses cases for smart cities, homes and buildings, communities, metering, supply chain and logistics, agriculture, and more. With hundreds of millions of devices connected to networks in more than 100 countries and growing, LoRa is creating a smarter planet.
 
+Future things include the following:
+- Full GPS Support
+- Ability to write to an SQL database
+- Config through WWW
+
 ## Supported Hardware
 
 Currently the hardware is limited to the TTGO Lora32 T3 V1.6.1 and the TTGO T-Beam V1.1
