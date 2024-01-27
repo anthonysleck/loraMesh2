@@ -60,6 +60,7 @@ void startDisplay()
 #endif
 }
 
+/*
 void startLittleFS()
 {
     // initialize littlefs
@@ -113,10 +114,11 @@ void startWIFIManager()
         delay(5000);
     }
 }
+*/
 
 void startLora()
 {
-    debug(F("Initializing bridge "));
+    debug(F("Initializing Bridge"));
     debugln(DEV_ID);
     SPI.begin(LORA_SCK, LORA_MISO, LORA_MOSI, LORA_CS);
     if (!manager.init())
@@ -205,16 +207,16 @@ void setup()
     debugln(firmwareLink);
 
     // initialize littlefs
-    startLittleFS();
+    //startLittleFS();
 
     // start double reset detector
-    startDRD();
+    //startDRD();
 
     // start WiFIManager
-    startWIFIManager();
+    //startWIFIManager();
 
     // display WiFi status
-    debugln("Connected to WiFi");
+    //debugln("Connected to WiFi");
 
     // start lora
     startLora();
@@ -232,5 +234,5 @@ void loop()
     messageRefresh();
 
     // double reset detector logic
-    drd->loop();
+    //drd->loop();
 }

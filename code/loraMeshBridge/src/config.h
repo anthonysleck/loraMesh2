@@ -11,13 +11,14 @@
    0.1 - new code; seperated code for node/bridge devices
    0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
    0.3 - add'd #define RH_MESH_MAX_MESSAGE_LEN 50 to both node and bridge to increase message length; remv's old commented out unused code.
+   0.4 - corrected node links
 */
 
 #ifndef config_h
 #define config_h
 
 // system versioning
-#define VER "0.3"
+#define VER "0.4"
 #define VER_BUILD "01262024"
 #define email "anthony.sleck@gmail.com"
 #define firmwareLink "https://github.com/anthonysleck/loraMesh2"

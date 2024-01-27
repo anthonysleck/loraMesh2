@@ -68,11 +68,11 @@ void startLora()
     SPI.begin(LORA_SCK, LORA_MISO, LORA_MOSI, LORA_CS);
     if (!manager.init())
     {
-        debugln(" init failed");
+        debugln("Initialization failed");
     }
     else
     {
-        debugln(" done");
+        debugln("Initialization Complete!");
     }
 
     rf95.setTxPower(txPower, false); // with false output is on PA_BOOST, power from 2 to 20 dBm, use this setting for high power demos/real usage
@@ -111,7 +111,7 @@ void startLora()
 void messageRefresh()
 {
     // set gps string
-    String gpsTempLocation = String(gpsLat, 6) + ", " + String(gpsLng, 6);  // using temp location defined in config.h; will change to live GPS later
+    String gpsTempLocation = String(gpsLat, 6) + ", " + String(gpsLng, 6); // using temp location defined in config.h; will change to live GPS later
 
     // send message every TXINTERVAL millisecs
     if (millis() > nextTxTime)
@@ -121,7 +121,7 @@ void messageRefresh()
         debug(BRIDGE_ID);
         debug(" res=");
 
-        res = manager.sendtoWait((uint8_t*)gpsTempLocation.c_str(), gpsTempLocation.length(), BRIDGE_ID);
+        res = manager.sendtoWait((uint8_t *)gpsTempLocation.c_str(), gpsTempLocation.length(), BRIDGE_ID);
         debugln(res);
         if (res == RH_ROUTER_ERROR_NONE)
         {

@@ -11,13 +11,14 @@
    0.1 - new code; seperated code for node/bridge devices
    0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
    0.3 - add'd #define RH_MESH_MAX_MESSAGE_LEN 50 to both node and bridge to increase message length; remv's old commented out unused code.
+   0.4 - corrected node links
 */
 
 #ifndef config_h
 #define config_h
 
 // system versioning
-#define VER "0.3"
+#define VER "0.4"
 #define VER_BUILD "01262024"
 #define email "anthony.sleck@gmail.com"
 #define firmwareLink "https://github.com/anthonysleck/loraMesh2"
@@ -37,7 +38,7 @@ float gpsLng = -87.909719;
 // device definitions
 #define DEBUG 1      // set to 0 to disable serial debugging; set to 1 to enable serial debugging
 #define HASDISPLAY 1 // set to 0 for no display; set to 1 for display
-#define DEV_ID 1     // address of the bridge; can be a value from 1-254
+#define DEV_ID 3     // address of the bridge; can be a value from 1-254
 #define BRIDGE_ID 1  // set to default bridge/server to receive data; default is 1
 
 // debugging
