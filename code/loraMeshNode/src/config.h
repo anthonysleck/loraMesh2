@@ -37,8 +37,8 @@ float gpsLng = -87.909719;
 // device definitions
 #define DEBUG 1      // set to 0 to disable serial debugging; set to 1 to enable serial debugging
 #define HASDISPLAY 1 // set to 0 for no display; set to 1 for display
-#define DEV_ID 20    // address of the bridge; can be a value from 1-254
-#define BRIDGE_ID 1   // set to default bridge/server to receive data; default is 1
+#define DEV_ID 1     // address of the bridge; can be a value from 1-254
+#define BRIDGE_ID 1  // set to default bridge/server to receive data; default is 1
 
 // debugging
 #if DEBUG == 1
