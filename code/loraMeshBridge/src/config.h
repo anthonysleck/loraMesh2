@@ -10,13 +10,14 @@
    Changelog:
    0.1 - new code; seperated code for node/bridge devices
    0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
+   0.3 - add'd #define RH_MESH_MAX_MESSAGE_LEN 50 to both node and bridge to increase message length; remv's old commented out unused code.
 */
 
 #ifndef config_h
 #define config_h
 
 // system versioning
-#define VER "0.2"
+#define VER "0.3"
 #define VER_BUILD "01262024"
 #define email "anthony.sleck@gmail.com"
 #define firmwareLink "https://github.com/anthonysleck/loraMesh2"
@@ -62,6 +63,7 @@ DoubleResetDetector* drd;
 #define LORA_DI0 26
 #define txPower 20
 #define txFreq 915.0
+#define RH_MESH_MAX_MESSAGE_LEN 50
 unsigned long nextTxTime;
 RH_RF95 rf95(LORA_CS, LORA_DI0); // slave select pin and interrupt pin, [heltec|ttgo] ESP32 Lora OLED with sx1276/8
 uint8_t buf[RH_MESH_MAX_MESSAGE_LEN];
