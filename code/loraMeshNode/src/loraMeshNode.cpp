@@ -112,8 +112,6 @@ void messageRefresh()
 {
     // set gps string
     String gpsTempLocation = String(gpsLat, 6) + ", " + String(gpsLng, 6);  // using temp location defined in config.h; will change to live GPS later
-    debugln(gpsTempLocation);
-    delay(1000);
 
     // send message every TXINTERVAL millisecs
     if (millis() > nextTxTime)
