@@ -34,6 +34,7 @@ Additional notes
 - Be sure to set different DEV_ID's for each node in the config.h file for the node type.
 - For bridges, there is a a Double Reset Detector and the Network Manager enabled by default. These will be able to be disabled at a later date, but are required. You must connect to a WiFi network upon first boot of the device.
 - The Bridges also require the filesystem to be uploaded.
+- Please note that the BRIDGE_ID and DEV_ID for each node has to be unique and cannot overlap. If bridge is set to 1 the nodes need to be set higher than 1. It is recommended to keep bridges from 1-10 and nodes from 11-254.
 
 ##  Changelog
 
