@@ -43,6 +43,7 @@ Additional notes
 - 0.2 - updated code; teseted node/bridge on LORA32 and TBEAM
 - 0.3 - add'd #define RH_MESH_MAX_MESSAGE_LEN 50 to both node and bridge to increase message length; remv's old commented out unused code.
 - 0.4 - corrected node links
+- 0.5 - add'd gps support; remv'd drd; reordered wdreset; remv'd wdreset messages; updated misc code
 
 ## Authors
 
