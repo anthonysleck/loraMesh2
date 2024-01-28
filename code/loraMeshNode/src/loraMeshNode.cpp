@@ -35,18 +35,6 @@ void startDisplay()
     display.drawString(23, 25, "Starting up!");
     display.display();
 
-    // add short delay
-    delay(5000);
-
-    // update tft
-    display.init();
-    display.flipScreenVertically();
-
-    display.clear();
-    display.setFont(ArialMT_Plain_16);
-    display.drawString(13, 25, "System is on!");
-    display.display();
-
     // add a small delay before switching to DEV_ID
     delay(5000);
 
@@ -110,6 +98,44 @@ void startLora()
 
 void messageRefresh()
 {
+// get GPSInfo and add it to a string
+// start GPS data read
+#if HASGPS == 1
+    while (ss.available() > 0)
+
+        // read GPS sensor data
+        if (gps.location.isValid())
+        {
+            // print GPS values
+            debug("Position:");
+            debug(gps.location.lat());
+            debug(", ");
+            debugln(gps.location.lng());
+
+            // float GPS values
+            float gpsLat = (gps.location.lat(), 6);
+            float gpsLng = (gps.location.lng(), 6);
+        }
+        else
+        {
+            // reset watchdog timer
+            watchDogRefresh();
+
+            debugln("INVALID DATA or GPS cannot see sky!");
+            float gpsLat = 0.000000;
+            float gpsLng = 0.000000;
+
+            // print temporary GPS values
+            debug("Position:");
+            debug(gpsLat);
+            debug(", ");
+            debugln(gpsLng);
+        }
+#else
+    float gpsLat = 0.000000;
+    float gpsLng = 0.000000;
+#endif
+
     // set gps string
     String gpsTempLocation = String(gpsLat, 6) + ", " + String(gpsLng, 6); // using temp location defined in config.h; will change to live GPS later
 
@@ -171,6 +197,11 @@ void setup()
     // start lora
     startLora();
 
+    // start GPS serial
+    #if HASGPS == 1
+    ss.begin(GPS_BAUD);
+    #endif
+    
     // start watchdog timer
     startWatchdogTimer();
 }
