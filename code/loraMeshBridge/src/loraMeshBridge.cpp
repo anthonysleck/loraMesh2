@@ -35,18 +35,6 @@ void startDisplay()
     display.drawString(23, 25, "Starting up!");
     display.display();
 
-    // add short delay
-    delay(5000);
-
-    // update tft
-    display.init();
-    display.flipScreenVertically();
-
-    display.clear();
-    display.setFont(ArialMT_Plain_16);
-    display.drawString(13, 25, "System is on!");
-    display.display();
-
     // add a small delay before switching to DEV_ID
     delay(5000);
 
@@ -60,7 +48,6 @@ void startDisplay()
 #endif
 }
 
-/*
 void startLittleFS()
 {
     // initialize littlefs
@@ -72,41 +59,13 @@ void startLittleFS()
     }
 }
 
-void startDRD()
-{
-    drd = new DoubleResetDetector(DRD_TIMEOUT, DRD_ADDRESS);
-
-    if (drd->detectDoubleReset())
-    {
-        debugln("Double Reset Detected");
-        digitalWrite(LED_PIN, LED_ON);
-    }
-    else
-    {
-        debugln("No Double Reset Detected");
-        digitalWrite(LED_PIN, LED_OFF);
-    }
-}
-
 void startWIFIManager()
 {
-// clear display
-#if HASDISPLAY == 1
-    {
-        String devID = String(DEV_ID);
-        display.clear();
-        display.setFont(ArialMT_Plain_16);
-        display.drawString(10, 25, "Bridge ID:");
-        display.drawString(100, 25, devID);
-        display.display();
-    }
-#endif
-
     // set WiFiManager timeout
     wifiManager.setTimeout(180);
 
     // initialize WiFiManager
-    if (!wifiManager.autoConnect("ESP32-Config"))
+    if (!wifiManager.autoConnect("ESP32-BRIDGE"))
     {
         debugln("Failed to connect, we should reset and try again...");
         delay(3000);
@@ -114,7 +73,6 @@ void startWIFIManager()
         delay(5000);
     }
 }
-*/
 
 void startLora()
 {
@@ -207,16 +165,13 @@ void setup()
     debugln(firmwareLink);
 
     // initialize littlefs
-    //startLittleFS();
-
-    // start double reset detector
-    //startDRD();
+    startLittleFS();
 
     // start WiFIManager
-    //startWIFIManager();
+    startWIFIManager();
 
     // display WiFi status
-    //debugln("Connected to WiFi");
+    debugln("Connected to WiFi");
 
     // start lora
     startLora();
@@ -232,7 +187,4 @@ void loop()
 
     // refresh messages
     messageRefresh();
-
-    // double reset detector logic
-    //drd->loop();
 }
